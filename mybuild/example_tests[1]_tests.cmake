@@ -1,0 +1,5 @@
+add_test([=[GoogleTestCi.Foo]=]  /home/sonik/CLionProjects/matrix/mybuild/example_tests [==[--gtest_filter=GoogleTestCi.Foo]==] --gtest_also_run_disabled_tests)
+set_tests_properties([=[GoogleTestCi.Foo]=]  PROPERTIES WORKING_DIRECTORY /home/sonik/CLionProjects/matrix/mybuild SKIP_REGULAR_EXPRESSION [==[\[  SKIPPED \]]==])
+add_test([=[ExampleTest.DmitriiLeonidovich]=]  /home/sonik/CLionProjects/matrix/mybuild/example_tests [==[--gtest_filter=ExampleTest.DmitriiLeonidovich]==] --gtest_also_run_disabled_tests)
+set_tests_properties([=[ExampleTest.DmitriiLeonidovich]=]  PROPERTIES WORKING_DIRECTORY /home/sonik/CLionProjects/matrix/mybuild SKIP_REGULAR_EXPRESSION [==[\[  SKIPPED \]]==])
+set(  example_tests_TESTS GoogleTestCi.Foo ExampleTest.DmitriiLeonidovich)
