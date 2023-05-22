@@ -58,112 +58,87 @@ TEST(MatrixTest, Subscript) {
 }
 
 TEST(MatrixTest, Determinant) {
-    bmstu::matrix a({4, 7, 1, 5, 2, 8, 6, 3, 1}, 3, 3);
-    bmstu::matrix b({4, 8, 2, 6, 0, 1}, 3, 2);
-    ASSERT_EQ(a.det(), 216);
-    ASSERT_THROW(b.det(), std::logic_error);
-}
-
-TEST(MatrixTest, Transpose) {
-    bmstu::matrix a({1, 4, 6, 8, 0, 9, 5, 3, 7}, 3, 3);
-    a.transpose();
-    bmstu::matrix proverka_1({1, 8, 5, 4, 0, 3, 6, 9, 7}, 3, 3);
-    for (int i = 0; i < 3; ++i) {
-        for (int j = 0; j < 3; ++j) {
-            ASSERT_EQ(a(i, j), proverka_1(i, j));
-        }
-    }
+    bmstu::matrix arr2d({1, 2, 3, 11, 22, 33, 111, 222, 333}, 3, 3);
+    bmstu::matrix matritsa({1, 2, 3, 11, 22, 33}, 3, 2);
+    ASSERT_THROW(matritsa.det(), std::logic_error);
+    ASSERT_EQ(arr2d.det(), 0);
 }
 
 TEST(MatrixTest, Multiplication) {
-    bmstu::matrix a({9, 2, 7, 2, 6, 1, 8, 3, 7}, 3, 3);
-    bmstu::matrix b({1, 6, 0, 2, 6, 7, 2, 8, 5}, 3, 3);
-
-    bmstu::matrix rezult_1 = a * b;
-    bmstu::matrix proverka_1({27, 122, 49, 16, 56, 47, 28, 122, 56}, 3, 3);
-    bmstu::matrix rezult_2 = a * 5;
-    bmstu::matrix proverka_2({45, 10, 35, 10, 30, 5, 40, 15, 35}, 3, 3);
+    bmstu::matrix arr2d({1, 2, 3, 11, 22, 33, 111, 222, 333}, 3, 3);
+    bmstu::matrix matritsa({1, 2, 3, 11, 22, 33}, 3, 2);
+    bmstu::matrix rezult_mult_matrix = arr2d * matritsa;
+    bmstu::matrix solution_mult_matrix({73, 123, 803, 1353, 8103, 13653}, 3, 2);
+    bmstu::matrix rezult_mult_number = arr2d * 2;
     for (int i = 0; i < 3; ++i) {
-        for (int j = 0; j < 3; ++j) {
-            ASSERT_EQ(rezult_1(i, j), proverka_1(i, j));
-            ASSERT_EQ(rezult_2(i, j), proverka_2(i, j));
+        for (int j = 0; j < 2; ++j) {
+            ASSERT_EQ(rezult_mult_matrix(i, j), solution_mult_matrix(i, j));
+            ASSERT_EQ(rezult_mult_number(i, j), arr2d(i, j)*2);
         }
     }
-    bmstu::matrix d({2, 5, 7, 3, 9, 7}, 2, 3);
-    bmstu::matrix c({4, 2, 7, 0, 4, 8, 1, 2, 4, 3, 5, 0}, 3, 4);
-
-    bmstu::matrix rezult_3 = d * c;
-    bmstu::matrix proverka_3({56, 65, 54, 10, 76, 99, 65, 18}, 2, 4);
-    for (int i = 0; i < 2; ++i) {
-        for (int j = 0; j < 4; ++j) {
-            ASSERT_EQ(rezult_3(i, j), proverka_3(i, j));
-        }
-    }
-    ASSERT_THROW(a * d, std::logic_error);
+    ASSERT_THROW(matritsa * arr2d, std::logic_error);
 }
 
 TEST(MatrixTest, Addition) {
-    bmstu::matrix a({5, 4, 9, 3, 6, 9, 2, 1, 6}, 3, 3);
-    bmstu::matrix b({5, 8, 9, 0, 4, 3, 1, 8, 7}, 3, 3);
-
-    bmstu::matrix rezult_1 = a + b;
-    bmstu::matrix proverka_1({10, 12, 18, 3, 10, 12, 3, 9, 13}, 3, 3);
+    bmstu::matrix arr2d({1, 2, 3, 11, 22, 33, 111, 222, 333}, 3, 3);
+    bmstu::matrix matritsa({1, 2, 3, 11, 22, 33, 111, 222, 333}, 3, 3);
+    bmstu::matrix rezult_add = arr2d + matritsa;
     for (int i = 0; i < 3; ++i) {
         for (int j = 0; j < 3; ++j) {
-            ASSERT_EQ(rezult_1(i, j), proverka_1(i, j));
+            ASSERT_EQ(rezult_add(i, j), arr2d(i, j)*2);
         }
     }
-    bmstu::matrix c({6, 8, 0, 7, 8, 4}, 2, 3);
-    ASSERT_THROW(a + c, std::logic_error);
+    bmstu::matrix fail({1, 2, 3}, 1, 3);
+    ASSERT_THROW(arr2d + fail, std::logic_error);
 }
 
 TEST(MatrixTest, Substraction) {
-    bmstu::matrix a({4, 8, 6, 4, 2, 1, 0, 9, 7}, 3, 3);
-    bmstu::matrix b({5, 9, 7, 6, 1, 4, 0, 3, 2}, 3, 3);
-
-    bmstu::matrix rezult_1 = a - b;
-    bmstu::matrix proverka_1({-1, -1, -1, -2, 1, -3, 0, 6, 5}, 3, 3);
+    bmstu::matrix arr2d({1, 2, 3, 11, 22, 33, 111, 222, 333}, 3, 3);
+    bmstu::matrix matritsa({1, 2, 3, 11, 22, 33, 111, 222, 333}, 3, 3);
+    bmstu::matrix rezult_substr = arr2d - matritsa;
     for (int i = 0; i < 3; ++i) {
         for (int j = 0; j < 3; ++j) {
-            ASSERT_EQ(rezult_1(i, j), proverka_1(i, j));
+            ASSERT_EQ(rezult_substr(i, j), 0);
         }
     }
-    bmstu::matrix c({7, 0, 1, 3, 9, 8}, 2, 3);
-    ASSERT_THROW(a - c, std::logic_error);
+    bmstu::matrix fail({1, 2, 3}, 1, 3);
+    ASSERT_THROW(arr2d - fail, std::logic_error);
 }
 
 TEST(MatrixTest, GetMinor) {
-    bmstu::matrix a({2, 6, 9, 8, 3, 1, 0, 8, 6, 5, 0, 4}, 4, 3);
-    bmstu::matrix rezult_1 = a.get_minor(1, 1);
-    bmstu::matrix proverka_1({2, 9, 0, 6, 5, 4}, 3, 2);
-    for (int i = 0; i < 3; ++i) {
+    bmstu::matrix arr2d({1, 2, 3, 11, 22, 33, 111, 222, 333}, 3, 3);
+    bmstu::matrix rezult_minor = arr2d.get_minor(2, 1);
+    bmstu::matrix solution({1, 3, 11, 33}, 2, 2);
+    for (int i = 0; i < 2; ++i) {
         for (int j = 0; j < 2; ++j) {
-            ASSERT_EQ(rezult_1(i, j), proverka_1(i, j));
+            ASSERT_EQ(rezult_minor(i, j), solution(i, j));
         }
     }
-    ASSERT_THROW(a.get_minor(-1, 1), std::logic_error);
-    ASSERT_THROW(a.get_minor(4, 1), std::logic_error);
+    ASSERT_THROW(arr2d.get_minor(-1, 7), std::logic_error);
+    ASSERT_THROW(arr2d.get_minor(6, 1), std::logic_error);
+}
+
+
+TEST(MatrixTest, Transpose) {
+    bmstu::matrix arr2d({1, 2, 3, 11, 22, 33, 111, 222, 333}, 3, 3);
+    arr2d.transpose();
+    bmstu::matrix rezult_trans({1, 11, 111, 2, 22, 222, 3, 33, 333}, 3, 3);
+    for (int i = 0; i < 3; ++i) {
+        for (int j = 0; j < 3; ++j) {
+            ASSERT_EQ(arr2d(i, j), rezult_trans(i, j));
+        }
+    }
 }
 
 TEST(MatrixTest, Reverse) {
-    bmstu::matrix a({1, -2, 1, 2, 1, -1, 3, 2, -2}, 3, 3);
-    bmstu::matrix rezult_1 = a.reverse();
-    bmstu::matrix proverka_1({0, 2, -1, -1, 5, -3, -1, 8, -5}, 3, 3);
+    bmstu::matrix arr2d({2, 5, 7, 6, 3, 4, 5, -2, -3}, 3, 3);
+    bmstu::matrix rezult_reverse = arr2d.reverse();
+    bmstu::matrix solution({1, -1, 1, -38, 41, -34, 27, -29, 24}, 3, 3);
     for (int i = 0; i < 3; ++i) {
         for (int j = 0; j < 3; ++j) {
-            ASSERT_EQ(rezult_1(i, j), proverka_1(i, j));
+            ASSERT_EQ(rezult_reverse(i, j), solution(i, j));
         }
     }
-    bmstu::matrix rezult_2 = a * rezult_1;
-    bmstu::matrix proverka_2({1, 0, 0, 0, 1, 0, 0, 0, 1}, 3, 3);
-    for (int i = 0; i < 3; ++i) {
-        for (int j = 0; j < 3; ++j) {
-            ASSERT_EQ(rezult_2(i, j), proverka_2(i, j));
-        }
-    }
-
-    bmstu::matrix b({4, -5, -2, 1, 7, 9, 1, -4, 3, -9, 5, 1}, 4, 3);
-    ASSERT_THROW(b.reverse(), std::logic_error);
-    bmstu::matrix c({1, 2, 3, 4, 5, 6, 7, 8, 9}, 3, 3);
-    ASSERT_THROW(c.reverse(), std::logic_error);
+    bmstu::matrix fail({1, 2, 3, 11, 22, 33, 111, 222, 333}, 3, 3);
+    ASSERT_THROW(fail.reverse(), std::logic_error);
 }

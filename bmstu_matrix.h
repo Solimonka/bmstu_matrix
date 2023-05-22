@@ -14,14 +14,14 @@ namespace bmstu {
 
         matrix() : data_(1), rows_(1), columns_(1) {
             if constexpr (!std::is_arithmetic_v<T>) {
-                throw std::logic_error("Arithmetic error");
+                throw std::logic_error("you're loser");
             }
             representation_ = {{&data_[0]}};
         }
 
         matrix(size_t rows, size_t columns) : data_(rows * columns), rows_(rows), columns_(columns) {
             if constexpr (!std::is_arithmetic_v<T>) {
-                throw std::logic_error("Arithmetic error");
+                throw std::logic_error("you're loser");
             }
             for (size_t i = 0; i < rows_; i++) {
                 std::vector<T *> current_row(columns_);
@@ -34,7 +34,7 @@ namespace bmstu {
 
         matrix(std::initializer_list<T> i_list, size_t rows, size_t columns) : rows_(rows), columns_(columns) {
             if constexpr (!std::is_arithmetic_v<T>) {
-                throw std::logic_error("Arithmetic error");
+                throw std::logic_error("you're loser");
             }
             if (i_list.size() == rows_ * columns_) {
                 data_.resize(columns_ * rows_);
@@ -85,7 +85,7 @@ namespace bmstu {
 
         T det() {
             if (columns_ != rows_) {
-                throw std::logic_error("can't count");
+                throw std::logic_error("you're loser");
             } else {
                 T result = T();
                 std::vector<size_t> indexes(columns_);
@@ -101,7 +101,7 @@ namespace bmstu {
 
         friend matrix<T> operator*(const matrix<T> &l, const matrix<T> &r) {
             if (l.columns_ != r.rows_) {
-                throw std::logic_error("No size");
+                throw std::logic_error("you're loser");
             }
             matrix<T> result(l.rows_, r.columns_);
             for (int i = 0; i < l.rows_; ++i) {
@@ -135,7 +135,7 @@ namespace bmstu {
                 }
                 return result;
             }
-            throw std::logic_error("No size");
+            throw std::logic_error("you're loser");
         }
 
         friend matrix<T> operator-(const matrix<T> &l, const matrix<T> &r) {
@@ -148,7 +148,7 @@ namespace bmstu {
                 }
                 return result;
             }
-            throw std::logic_error("No size");
+            throw std::logic_error("you're loser");
         }
 
         matrix<T> get_minor(size_t row, size_t column) {
@@ -171,7 +171,7 @@ namespace bmstu {
                 }
                 return result;
             } else {
-                throw std::out_of_range("Oshibka");
+                throw std::out_of_range("you're loser");
             }
         }
 
@@ -190,7 +190,7 @@ namespace bmstu {
         matrix<T> reverse() {
             auto det_matr = det();
             if (det_matr == 0) {
-                throw std::logic_error("no");
+                throw std::logic_error("you're loser");
             } else {
                 T revers_det = 1 / det_matr;
                 matrix<T> result = adj();
