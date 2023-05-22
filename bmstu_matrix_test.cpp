@@ -2,16 +2,6 @@
 #include <string>
 #include "bmstu_matrix.h"
 
-TEST(GoogleTestCi, Foo) {
-    ASSERT_TRUE(true);
-}
-
-TEST(ExampleTest, DmitriiLeonidovich) {
-    std::string dml = "DmitriiLeonidovich";
-    const char *dml_c = "DmitriiLeonidovich";
-    ASSERT_STREQ(dml.c_str(), dml_c);
-}
-
 TEST(MatrixTest, BasicConstructor) {
     bmstu::matrix<int> arr2d;
     ASSERT_EQ(arr2d(0, 0), 0);
