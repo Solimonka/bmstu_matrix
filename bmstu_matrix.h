@@ -245,6 +245,22 @@ namespace bmstu {
             }
         }
 
+        
+        void odin(){
+            if (rows_ != columns_){
+                throw std::logic_error("lOsEr");
+            }else{
+                for (size_t i = 0; i < columns_; ++i){
+                    for (size_t j = 0; j < columns_; ++j){
+                        if (i == j){
+                            data_[i][j] = 1;
+                        }else{
+                            data_[i][j] = 0;
+                        }
+                    }
+                }
+            }
+        }
 
         std::vector<T> data_;
         std::vector<std::vector<T *>> representation_;
