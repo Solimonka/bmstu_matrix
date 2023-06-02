@@ -133,10 +133,9 @@ TEST(MatrixTest, Reverse) {
     ASSERT_THROW(fail.reverse(), std::logic_error);
 }
 
-TEST(MatrixTest, Void) {
+TEST(MatrixTest, Unit) {
     bmstu::matrix arr2d({2, 5, 7, 6, 3, 4, 5, -2, -3}, 3, 3);
     bmstu::matrix result({1, 0, 0, 0, 1, 0, 0, 0, 1}, 3, 3);
-    std::swap(arr2d[0], arr2d[2]);
     arr2d.unit();
     for (int i = 0; i < 3; ++i) {
         for (int j = 0; j < 3; ++j) {
