@@ -231,9 +231,9 @@ namespace bmstu {
                 for (size_t i = 0; i < columns_; ++i){
                     for (size_t j = 0; j < columns_; ++j){
                         if (i == j){
-                            data_[j * columns_ + i] = 1;
+                            data_[i * columns_ + j] = 1;
                         }else{
-                            data_[j * rows_ + i] = 0;
+                            data_[i * rows_ + j] = 0;
                         }
                     }
                 }
