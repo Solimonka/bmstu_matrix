@@ -244,8 +244,8 @@ namespace bmstu {
             if (a > rows_ || a < 0 || b > rows_ || b < 0){
                 throw std::logic_error("lOsEr");
             } else {
-                std::vector<T> first = representation_[a];
-                std::vector<T> second = representation_[b];
+                std::vector<T *> first = representation_[a];
+                std::vector<T *> second = representation_[b];
                 representation_[a] = second;
                 representation_[b] = first;
             }
