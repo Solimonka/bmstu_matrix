@@ -137,7 +137,7 @@ TEST(MatrixTest, Unit) {
     bmstu::matrix arr2d({2, 5, 7, 6, 3, 4, 5, -2, -3}, 3, 3);
     bmstu::matrix result({1, 0, 0, 0, 0, 1, 0, 1, 0}, 3, 3);
     arr2d.unit();
-    arr2d.swap_rows(1, 2)
+    arr2d.swap_rows(1, 2);
     for (int i = 0; i < 3; ++i) {
         for (int j = 0; j < 3; ++j) {
             ASSERT_EQ(arr2d(i, j), result(i, j));
