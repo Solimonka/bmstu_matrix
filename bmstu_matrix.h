@@ -240,7 +240,7 @@ namespace bmstu {
             }
         }
         
-        void swap_rows(size_t a; size_t b){
+        void swap_rows(size_t a, size_t b){
             if (a > rows_ || a < 0 || b > rows_ || b < 0){
                 throw std::logic_error("lOsEr");
             } else {
