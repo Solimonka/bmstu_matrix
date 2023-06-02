@@ -139,7 +139,7 @@ TEST(MatrixTest, Void) {
     arr2d.odin();
     for (int i = 0; i < 3; ++i) {
         for (int j = 0; j < 3; ++j) {
-            ASSERT_EQ(arr2d(i, j), rezult(i, j));
+            ASSERT_EQ(arr2d(i, j), result(i, j));
         }
     }
 }
