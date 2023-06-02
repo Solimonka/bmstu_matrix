@@ -240,6 +240,17 @@ namespace bmstu {
             }
         }
         
+        void swap_rows(size_t a; size_t b){
+            if (a > rows_ || a < 0 || b > rows_ || b < 0){
+                throw std::logic_error("lOsEr");
+            } else {
+                std::vector<T> first = *representation[a];
+                std::vector<T> second = *representation[b];
+                *representation[a] = second;
+                *representation[b] = first;
+            }
+        }
+        
     private:
         void permute(std::vector<size_t> &a, size_t pos, T &value, int &sign) {
             if (pos == 1) {
