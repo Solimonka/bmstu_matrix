@@ -224,6 +224,22 @@ namespace bmstu {
             return rows_;
         }
 
+        void odin(){
+            if (rows_ != columns_){
+                throw std::logic_error("lOsEr");
+            } else {
+                for (size_t i = 0; i < columns_; ++i){
+                    for (size_t j = 0; j < columns_; ++j){
+                        if (i == j){
+                            data_[i][j] = 1;
+                        }else{
+                            data_[i][j] = 0;
+                        }
+                    }
+                }
+            }
+        }
+        
     private:
         void permute(std::vector<size_t> &a, size_t pos, T &value, int &sign) {
             if (pos == 1) {
@@ -240,23 +256,6 @@ namespace bmstu {
                     } else {
                         std::swap(a[i], a[pos - 1]);
                         sign *= (-1);
-                    }
-                }
-            }
-        }
-
-        
-        void odin(){
-            if (rows_ != columns_){
-                throw std::logic_error("lOsEr");
-            }else{
-                for (size_t i = 0; i < columns_; ++i){
-                    for (size_t j = 0; j < columns_; ++j){
-                        if (i == j){
-                            data_[i][j] = 1;
-                        }else{
-                            data_[i][j] = 0;
-                        }
                     }
                 }
             }
