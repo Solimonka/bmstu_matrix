@@ -133,7 +133,7 @@ TEST(MatrixTest, Reverse) {
     ASSERT_THROW(fail.reverse(), std::logic_error);
 }
 
-TEST(MatrixTest, Reverse) {
+TEST(MatrixTest, Void) {
     bmstu::matrix arr2d({2, 5, 7, 6, 3, 4, 5, -2, -3}, 3, 3);
     bmstu::matrix result({1, 0, 0, 0, 1, 0, 0, 0, 1}, 3, 3);
     arr2d.odin();
