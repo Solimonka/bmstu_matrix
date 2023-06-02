@@ -132,3 +132,14 @@ TEST(MatrixTest, Reverse) {
     bmstu::matrix fail({1, 2, 3, 11, 22, 33, 111, 222, 333}, 3, 3);
     ASSERT_THROW(fail.reverse(), std::logic_error);
 }
+
+TEST(MatrixTest, Reverse) {
+    bmstu::matrix arr2d({2, 5, 7, 6, 3, 4, 5, -2, -3}, 3, 3);
+    bmstu::matrix result({1, 0, 0, 0, 1, 0, 0, 0, 1}, 3, 3);
+    arr2d.odin();
+    for (int i = 0; i < 3; ++i) {
+        for (int j = 0; j < 3; ++j) {
+            ASSERT_EQ(arr2d(i, j), rezult(i, j));
+        }
+    }
+}
