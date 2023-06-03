@@ -63,7 +63,7 @@ TEST(MatrixTest, Multiplication) {
     for (int i = 0; i < 3; ++i) {
         for (int j = 0; j < 2; ++j) {
             ASSERT_EQ(rezult_mult_matrix(i, j), solution_mult_matrix(i, j));
-            ASSERT_EQ(rezult_mult_number(i, j), arr2d(i, j)*2);
+            ASSERT_EQ(rezult_mult_number(i, j), arr2d(i, j) * 2);
         }
     }
     ASSERT_THROW(matritsa * arr2d, std::logic_error);
@@ -75,7 +75,7 @@ TEST(MatrixTest, Addition) {
     bmstu::matrix rezult_add = arr2d + matritsa;
     for (int i = 0; i < 3; ++i) {
         for (int j = 0; j < 3; ++j) {
-            ASSERT_EQ(rezult_add(i, j), arr2d(i, j)*2);
+            ASSERT_EQ(rezult_add(i, j), arr2d(i, j) * 2);
         }
     }
     bmstu::matrix fail({1, 2, 3}, 1, 3);
@@ -144,7 +144,7 @@ TEST(MatrixTest, Unit) {
             ASSERT_EQ(arr2d(i, j), result(i, j));
         }
     }
-    try{
+    try {
         arr.unit();
     } catch (const std::logic_error &err) {
         ASSERT_EQ(err.what(), std::string("lOsEr"));
